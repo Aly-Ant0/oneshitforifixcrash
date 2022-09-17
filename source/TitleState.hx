@@ -232,7 +232,7 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('customer-service', 'preload', 'CUSTOMER SERVICE'));
+				FlxG.sound.playMusic(Paths.music('customer-service', 'preload'));
 			}
 		}
 		persistentUpdate = true;
@@ -425,7 +425,7 @@ class TitleState extends MusicBeatState
 		{
 			FlxG.sound.music.fadeIn(2, 0, 1, function(fl:FlxTween)
 			{
-				FlxG.sound.playMusic(Paths.music('nightlight', 'preload', 'NIGHTLIGHT'), 0);
+				FlxG.sound.playMusic(Paths.music('nightlight', 'preload'), 0);
 				FlxTween.num(FlxG.sound.volume, 1, 4);
 				MusicBeatState.switchState(new MainMenuState());
 				closedState = true;
