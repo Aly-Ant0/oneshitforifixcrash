@@ -300,7 +300,7 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
-		teamLogo = new FlxSprite().loadGraphic(Paths.h024Menu('logo', 'NONE'));
+		teamLogo = new FlxSprite().loadGraphic(Paths.image('logo', 'NONE'));
 		teamLogo.antialiasing = ClientPrefs.globalAntialiasing;
 		teamLogo.screenCenter();
 		teamLogo.scale.set(0.3, 0.3);
