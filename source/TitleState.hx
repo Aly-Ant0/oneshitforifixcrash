@@ -232,7 +232,7 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.h024Music('customer-service', 'preload', 'CUSTOMER SERVICE'));
+				FlxG.sound.playMusic(Paths.music('customer-service', 'preload', 'CUSTOMER SERVICE'));
 			}
 		}
 		persistentUpdate = true;
@@ -307,19 +307,7 @@ class TitleState extends MusicBeatState
 		teamLogo.alpha = 0.00001;
 		add(teamLogo);
 
-		recreatorsGroupS = new FlxTypedGroup<FlxSprite>();
-		add(recreatorsGroupS);
-
-		for (i in 0...recreatorsArray.length)
-		{
-			var item:FlxSprite = new FlxSprite((100*i), 0).loadGraphic(Paths.h024Menu(recreatorsArray[i], 'NONE'));
-			item.antialiasing = ClientPrefs.globalAntialiasing;
-			item.screenCenter(Y);
-			item.alpha = 0.0001;
-			add(item);
-		}
-
-		txt = new FlxText(0, FlxG.height * -1, FlxG.width, "Original Mod by", 32);
+		txt = new FlxText(0, FlxG.height - 695, FlxG.width, "Original Mod by", 32);
 		txt.setFormat(Paths.font("goodbyeDespair.ttf"), 33, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		txt.alpha = 0.0001;
 		add(txt);
@@ -437,7 +425,7 @@ class TitleState extends MusicBeatState
 		{
 			FlxG.sound.music.fadeIn(2, 0, 1, function(fl:FlxTween)
 			{
-				FlxG.sound.playMusic(Paths.h024Music('nightlight', 'preload', 'NIGHTLIGHT'), 0);
+				FlxG.sound.playMusic(Paths.music('nightlight', 'preload', 'NIGHTLIGHT'), 0);
 				FlxTween.num(FlxG.sound.volume, 1, 4);
 				MusicBeatState.switchState(new MainMenuState());
 				closedState = true;
