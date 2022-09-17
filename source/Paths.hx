@@ -28,7 +28,7 @@ class Paths
 {
 	public static var menuMusic:String = '';
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
-	inline public static var VIDEO_EXT = "";
+	inline public static var VIDEO_EXT = "mp5";
 
 	#if MODS_ALLOWED
 	public static var ignoreModFolders:Array<String> = [
@@ -187,12 +187,12 @@ class Paths
 	}
 	inline static public function lua(key:String, ?library:String)
 	{
-		return Main.path + getPath('$key.lua', TEXT, library);
+		return getPath('$key.lua', TEXT, library);
 	}
 	inline static public function luaAsset(key:String, ?library:String)
-        {
+	{
 		return getPath('$key.lua', TEXT, library);
-        }
+	}
 	static public function video(key:String)
 	{
 		#if MODS_ALLOWED
@@ -473,8 +473,16 @@ class Paths
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		// trace(gottenPath);
 		if(!currentTrackedSounds.exists(gottenPath))
+		#if MODS_ALLOWED
 			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
-		
+		#else
+		{
+			var folder:String = '';
+			if(path == 'songs') folder = 'songs:';
+
+			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library)));
+		}
+		#end
 		localTrackedAssets.push(gottenPath);
 		return currentTrackedSounds.get(gottenPath);
 	}
@@ -493,7 +501,7 @@ class Paths
 	}
 
 	inline static public function modsVideo(key:String) {
-		return modFolders('videos/' + key +);
+		return modFolders('videos/' + key + '.' + VIDEO_EXT);
 	}
 
 	inline static public function modsSounds(path:String, key:String) {
