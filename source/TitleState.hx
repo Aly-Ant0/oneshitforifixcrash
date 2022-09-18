@@ -307,7 +307,7 @@ class TitleState extends MusicBeatState
 		teamLogo.alpha = 0.00001;
 		add(teamLogo);
 
-		txt = new FlxText(0, FlxG.height - 695, FlxG.width, "Original Mod by", 32);
+		txt = new FlxText(0, -FlxG.height * 1.5, FlxG.width, "Original Mod by", 32);
 		txt.setFormat(Paths.font("goodbyeDespair.ttf"), 33, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		txt.alpha = 0.0001;
 		add(txt);
@@ -351,7 +351,7 @@ class TitleState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
-		FlxTween.tween(txt, {y: txt.y + 25}, 0.25);
+		FlxTween.tween(txt, {y: -FlxG.height + 25}, 0.25);
 		FlxTween.tween(txt2, {y: FlxG.height - 25}, 0.25);
 		FlxTween.tween(teamLogo, {"scale.x": 1, "scale.y": 1}, 3.5, {
 			ease:FlxEase.expoOut,
